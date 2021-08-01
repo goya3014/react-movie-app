@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { FaCode } from "react-icons/fa";
-import {API_URL, API_KEY } from '../../Config';
+import {API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from './Sections/MainImage';
 function LandingPage() {
 
@@ -16,6 +16,7 @@ function LandingPage() {
             setMovies([response.results])
             //MainMovieImage에 가장 잘나가는 영화인 첫번째 영화를 넣어주기
             setMainMovieImage(response.results[0])
+            console.log(response.results)
         })
 
     }, [])
@@ -23,7 +24,12 @@ function LandingPage() {
     return (
         <div style={{ width: '100%', margin: '0' }}>
                 {/* Main Image */}
-                <MainImage />
+                {MainMovieImage &&
+                <MainImage image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}
+                            title={MainMovieImage.original_title}
+                            text={MainMovieImage.overview}
+                />
+                }
             <div style={{ width: '85%', margin: '1rem auto'}}>
                 <h2>Movies by latest</h2>
                 <hr />
