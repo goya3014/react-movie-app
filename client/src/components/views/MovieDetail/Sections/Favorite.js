@@ -1,4 +1,3 @@
-import { response } from 'express'
 import React, { useEffect} from 'react'
 import Axios from 'axios'
 
@@ -21,6 +20,7 @@ function Favorite(props) {
         // axios post 주소는 임의로 정할 수 있음
         Axios.post('/api/favorite/favoriteNumber', variables)
             .then(response => {
+                //console.log(response.data)
                 if(response.data.success){
 
                 }else {
@@ -28,7 +28,19 @@ function Favorite(props) {
                 }
             })
 
+        Axios.post('/api/favorite/favorited', variables)
+            .then(response => {
+                //console.log(response.data)
+                if(response.data.success){
+
+                }else {
+                    alert('정보를 가져오는 데 실패했습니다.')
+                }
+            })
+
     }, [])
+
+
 
 
     return (

@@ -21,6 +21,7 @@ function GridCards(props) {
             </div>
         </Col>
         )
+        
     }
 
 }
